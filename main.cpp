@@ -23,8 +23,7 @@ int main() {
     for(int i = 0;i < small_n;i++){
         *out_point++ = *in_point++;
     }
-    errno_t err = memcpy_s(out_data + N*size - remainder, remainder, in_data + N*size - remainder, remainder);
-    if (err) cout <<"Error executing memcpy_s.\n";
+    memcpy_s(out_data + N*size - remainder, remainder, in_data + N*size - remainder, remainder);
 
     for (some_type t : in_data)
     {
