@@ -1,13 +1,12 @@
 #include <iostream>
 #include <experimental/random>
-#include <memory.h>
 typedef double some_type; // int can be switch on something that isn't bool
 
 using std::cout;
 using std::endl;
 
 int main() {
-    const int N = 100; //scalable to limits of int what is reasonably big
+    const int N = 1000; //scalable to limits of int what is reasonably big
     some_type in_data[N];
     for (int i = 0; i < N;++i) in_data[i] = std::experimental::randint(32, 126); //numbers are good to convert into char
 
@@ -23,7 +22,9 @@ int main() {
     for(int i = 0;i < small_n;i++){
         *out_point++ = *in_point++;
     }
-    memcpy_s(out_data + N*size - remainder, remainder, in_data + N*size - remainder, remainder);
+    for(int i = remainder; i > 0;i--){
+        out_data[N-remainder] = in_data[N-remainder];
+    }
 
     for (some_type t : in_data)
     {
