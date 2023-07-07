@@ -1,6 +1,6 @@
 #include <iostream>
 #include <experimental/random>
-typedef double some_type; // int can be switch on something that isn't bool
+typedef int some_type; // int can be switch on something that isn't bool
 
 using std::cout;
 using std::endl;
@@ -23,7 +23,7 @@ int main() {
         *out_point++ = *in_point++;
     }
     for(int i = remainder; i > 0;i--){
-        out_data[N-remainder] = in_data[N-remainder];
+        out_data[N-i] = in_data[N-i];
     }
 
     for (some_type t : in_data)
